@@ -35,6 +35,33 @@ module Caracal
                   end
                 end
               end
+
+              xml['w'].r run_options do
+                xml['w'].rPr do
+                  unless document.page_number_number_size.nil?
+                    xml['w'].sz({ 'w:val'  => document.page_number_number_size })
+                    xml['w'].szCs({ 'w:val' => document.page_number_number_size })
+                  end
+                end
+                xml['w'].fldChar({ 'w:fldCharType' => 'begin' })
+                xml['w'].instrText({ 'xml:space' => 'preserve' }) do
+                  xml.text 'PAGE'
+                end
+                xml['w'].fldChar({ 'w:fldCharType' => 'end' })
+              end
+              xml['w'].r run_options do
+                xml['w'].rPr do
+                  xml['w'].rtl({ 'w:val' => '0' })
+                end
+              end
+            end
+
+            xml['w'].p paragraph_options do
+              xml['w'].pPr do
+                xml['w'].contextualSpacing({ 'w:val' => '0' })
+                xml['w'].jc({ 'w:val' => "#{ document.page_number_align }" })
+              end
+
               unless document.page_number_label_2.nil?
                 xml['w'].r run_options do
                   xml['w'].rPr do
@@ -44,6 +71,7 @@ module Caracal
                     end
                   end
                   xml['w'].t({ 'xml:space' => 'preserve' }) do
+                    xml.text ""
                     xml.text "#{ document.page_number_label_2 } "
                   end
                 end
