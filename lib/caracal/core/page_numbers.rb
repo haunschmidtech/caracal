@@ -22,6 +22,7 @@ module Caracal
           # accessors
           attr_reader :page_number_align
           attr_reader :page_number_label
+          attr_reader :page_number_label_2
           attr_reader :page_number_label_size
           attr_reader :page_number_number_size
           attr_reader :page_number_show
@@ -42,6 +43,7 @@ module Caracal
             if model.valid?
               @page_number_align        = model.page_number_align
               @page_number_label        = model.page_number_label
+              @page_number_label_2        = model.page_number_label_2
               @page_number_label_size   = model.page_number_label_size
               @page_number_number_size  = model.page_number_number_size
               @page_number_show         = model.page_number_show
