@@ -33,6 +33,16 @@ module Caracal
                   xml['w'].t({ 'xml:space' => 'preserve' }) do
                     xml.text "#{ document.page_number_label } "
                   end
+                end
+              end
+              unless document.page_number_label_2.nil?
+                xml['w'].r run_options do
+                  xml['w'].rPr do
+                    xml['w'].rStyle({ 'w:val' => 'PageNumber' })
+                    unless document.page_number_label_size.nil?
+                      xml['w'].sz({ 'w:val'  => document.page_number_label_size })
+                    end
+                  end
                   xml['w'].t({ 'xml:space' => 'preserve' }) do
                     xml.text "#{ document.page_number_label_2 } "
                   end
